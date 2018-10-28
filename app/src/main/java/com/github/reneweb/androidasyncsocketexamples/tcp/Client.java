@@ -57,7 +57,7 @@ public class Client {
             @Override
             public void onCompleted(Exception ex) {
                 if(ex != null) throw new RuntimeException(ex);
-                System.out.println("[Client] Successfully end connection");
+                System.out.println("[Client] Successfully end connection naja");
             }
         });
     }
