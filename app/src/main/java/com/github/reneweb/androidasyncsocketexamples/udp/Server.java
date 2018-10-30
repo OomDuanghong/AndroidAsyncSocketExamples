@@ -31,6 +31,7 @@ public class Server {
         asyncDatagramSocket.setDataCallback(new DataCallback() {
             @Override
             public void onDataAvailable(DataEmitter emitter, ByteBufferList bb) {
+                System.out.println("[Server]" + emitter);
                 System.out.println("[Server] Received Message " + new String(bb.getAllByteArray()));
             }
         });

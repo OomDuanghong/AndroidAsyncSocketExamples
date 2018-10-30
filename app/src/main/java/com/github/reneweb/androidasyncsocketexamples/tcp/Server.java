@@ -8,15 +8,22 @@ import com.koushikdutta.async.callback.ListenCallback;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
 
+// Add
+import android.app.Activity;
+import com.github.reneweb.androidasyncsocketexamples.MainActivity;
+
 public class Server {
 
     private InetAddress host;
     private int port;
 
-    public Server(String host, int port) {
+    public Server(String host, int port) throws UnknownHostException {
         try {
+            System.out.println("[Server] :: Host...");
             this.host = InetAddress.getByName(host);
+            System.out.println("[Server]" + host);
         } catch (UnknownHostException e) {
+            System.out.println("[Server] :: No Connection!!! :( " );
             throw new RuntimeException(e);
         }
 
@@ -40,8 +47,16 @@ public class Server {
 
             @Override
             public void onCompleted(Exception ex) {
-                if(ex != null) throw new RuntimeException(ex);
-                System.out.println("[Server] Successfully shutdown server");
+//                if(ex != null) throw new RuntimeException(ex);
+//                System.out.println("[Server] Successfully shutdown server");
+
+                if(ex != null) {
+                    System.out.println("[Server] Successfully shutdown server");
+//                    throw new RuntimeException(ex);
+                }else {
+//                    throw new RuntimeException(ex);
+                }
+
             }
         });
     }
