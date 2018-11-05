@@ -24,7 +24,7 @@ public class Client {
     ////////////    Add    ////////////////
     private String message = "Hello Server get get";
 
-    public Client(String host, int port,String message) {
+    public Client(String host, int port, String msg) {
         this.host = host;
         this.port = port;
         this.message = message;
