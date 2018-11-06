@@ -36,10 +36,11 @@ public class Client {
 
     //    public Client(String host, int port, String msg) { // OOM
     public Client(String host, int port, String msg) {    // BM
-        System.out.println("1111111 Client");
+// passed        System.out.println("1111111 Client");
         this.host = host;
         this.port = port;
-        this.message = msg;    // OOM
+        this.message = msg;  // OOM
+        System.out.println(msg + "Test ///////");
         setup1();
     }
 
@@ -89,9 +90,6 @@ public class Client {
         AsyncServer.getDefault().connectSocket(new InetSocketAddress(host, port), new ConnectCallback() {
             @Override
             public void onConnectCompleted(Exception ex, final AsyncSocket socket) {
-//passed                 System.out.println("into Asyn 555555555");
-                new SendMessage(ex,socket,message);   // OOM
-//passed                 System.out.println("into Asyn Success");
                 handleConnectCompleted(ex, socket);
             }
         });
