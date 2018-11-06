@@ -22,13 +22,15 @@ public class Server {
             System.out.println("[Server] :: Host...");
             this.host = InetAddress.getByName(host);
             System.out.println("[Server]" + host);
+            System.out.println("[Server]" + this.host);
+
         } catch (UnknownHostException e) {
-            System.out.println("[Server] :: No Connection!!! :( " );
+            System.out.println("[Server] :: No Connection !!! :( " );
             throw new RuntimeException(e);
         }
 
         this.port = port;
-
+        System.out.println(this.port);
         setup();
     }
 
@@ -49,12 +51,12 @@ public class Server {
             public void onCompleted(Exception ex) {
 //                if(ex != null) throw new RuntimeException(ex);
 //                System.out.println("[Server] Successfully shutdown server");
-
+                System.out.print(ex + " EiEi");
                 if(ex != null) {
                     System.out.println("[Server] Successfully shutdown server");
 //                    throw new RuntimeException(ex);
                 }else {
-//                    throw new RuntimeException(ex);
+                   throw new RuntimeException(ex);
                 }
 
             }

@@ -12,15 +12,17 @@ public class SendMessage {
     private Exception ex;
     private AsyncSocket socket;
     private String message;
-    public SendMessage(Exception ex,AsyncSocket socket,String message){
-        this.ex = ex;
-        this.socket = socket;
+
+
+    public SendMessage(Exception exx,AsyncSocket sockett,String message){
+        this.ex = exx;
+        this.socket = sockett;
         this.message = message;
         handleConnectCompleted(ex,socket);
     }
     private void handleConnectCompleted(Exception ex, final AsyncSocket socket) {
         if(ex != null) {
-            System.out.println("[Client] Faillllllllllllllllll" );
+            System.out.println("[Client] Fail" );
             throw new RuntimeException(ex);
         }
         Util.writeAll(socket, message.getBytes(), new CompletedCallback() {
