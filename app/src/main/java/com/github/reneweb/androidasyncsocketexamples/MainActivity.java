@@ -1,11 +1,13 @@
 package com.github.reneweb.androidasyncsocketexamples;
 
+import android.content.Context;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -21,13 +23,15 @@ public class MainActivity extends ActionBarActivity {
 
     // Added by Oom
     private TextView status;
-    private EditText IPAddress,Port,Message;
+    private EditText IPAddress,Port,Message,time,pressure;
     ListView listView;
     private static MainActivity instance;
     List<String> list = new ArrayList<String>();
 
-    private String ipAdd,portString;
+    private String ipAdd,portString,state,command1;
     private int port;
+    List<String> command = new ArrayList<String>();
+
 
     //////////////////////////////////////////////////////////////////
 
@@ -39,7 +43,11 @@ public class MainActivity extends ActionBarActivity {
         Port = (EditText)findViewById(R.id.port);           // BM
         Message = (EditText)findViewById(R.id.message);         // BM
         status = (TextView) findViewById(R.id.status);
+        time = (EditText) findViewById(R.id.Time);
+        pressure = (EditText) findViewById(R.id.Pressure);
         instance = this;
+        bindView();
+        initView();
 
 
         new AsyncTask<Void, Void, Void>() {
@@ -53,7 +61,7 @@ public class MainActivity extends ActionBarActivity {
 //                new com.github.reneweb.androidasyncsocketexamples.udp.Client("localhost", 7001).send("Hello World");
 
 
-                 //////////  Added by Oom ///////////
+                //////////  Added by Oom ///////////
 //                try {
 //                    new com.github.reneweb.androidasyncsocketexamples.tcp.Server("10.10.186.197", 7000);
 //                } catch (UnknownHostException e) {
@@ -68,7 +76,206 @@ public class MainActivity extends ActionBarActivity {
         }.execute();
     }
 
+    private void bindView(){
+//        Time = (EditText) findViewById(R.id.Time);
+//        Pressure = (EditText) findViewById(R.id.Pressure);
+    }
 
+    private void initView(){
+        // To register click event to view
+        findViewById(R.id.directControl).setOnClickListener(new InnerOnClickListener());
+        findViewById(R.id.state1).setOnClickListener(new InnerOnClickListener());
+        findViewById(R.id.state2).setOnClickListener(new InnerOnClickListener());
+        findViewById(R.id.state3).setOnClickListener(new InnerOnClickListener());
+        findViewById(R.id.state4).setOnClickListener(new InnerOnClickListener());
+        findViewById(R.id.state5).setOnClickListener(new InnerOnClickListener());
+        findViewById(R.id.start).setOnClickListener(new InnerOnClickListener());
+        findViewById(R.id.emergency).setOnClickListener(new InnerOnClickListener());
+        findViewById(R.id.read_state).setOnClickListener(new InnerOnClickListener());
+        findViewById(R.id.ca).setOnClickListener(new InnerOnClickListener());
+        findViewById(R.id.submit).setOnClickListener(new InnerOnClickListener());
+    }
+
+    // A class that handles all of click events
+    // It is private from other android class since it is within the Activity.
+    class InnerOnClickListener implements View.OnClickListener{
+        @Override
+        public void onClick(View v) {
+            switch (v.getId()) {
+                case R.id.directControl:
+                    AddCommand(v);
+                    break;
+                case R.id.state1:
+                    AddCommand(v);
+                    break;
+                case R.id.state2:
+                    AddCommand(v);
+                    break;
+                case R.id.state3:
+                    AddCommand(v);
+                    break;
+                case R.id.state4:
+                    AddCommand(v);
+                    break;
+                case R.id.state5:
+                    AddCommand(v);
+                    break;
+                case R.id.start:
+                    AddCommand(v);
+                    break;
+                case R.id.emergency:
+                    AddCommand(v);
+                    break;
+                case R.id.read_state:
+                    AddCommand(v);
+                    break;
+                case R.id.ca:
+                    AddCommand(v);
+                    break;
+                case R.id.submit:
+                    AddTAP();
+                    break;
+            }
+            hideKeyboardInput(v);
+        }
+    }
+
+
+
+
+    //Check:tha last click is just the one to pick for use in the command
+    private void AddCommand(View v) {
+        if(command == null){
+            switch (v.getId()) {
+                case R.id.directControl:
+//                    command.add("02 01 02");
+                    ShowMessage("02 01 02");
+                    break;
+                case R.id.state1:
+//                    command.add("01 ");
+                    state = "01";
+                    break;
+                case R.id.state2:
+//                    command.add("02 ");
+                    state = "02";
+                    break;
+                case R.id.state3:
+//                    command.add("03 ");
+                    state = "03";
+                    break;
+                case R.id.state4:
+//                    command.add("04 ");
+                    state = "04";
+                    break;
+                case R.id.state5:
+//                    command.add("05 ");
+                    state = "05";
+                    break;
+                case R.id.start:
+//                    command.add("0B FF 01 00 0000 01 0000");
+//                    command1 ="0B FF 01 00 0000 01 0000";
+                    ShowMessage("0B FF 01 00 0000 01 0000");
+                    break;
+                case R.id.emergency:
+//                    command.add("EE");
+                    ShowMessage("EE");
+                    break;
+                case R.id.read_state:
+//                    command.add("01");
+                    ShowMessage("01");
+                    break;
+                case R.id.ca:
+//                    command.add("CA");
+                    ShowMessage("CA");
+                    break;
+            }
+        }else{
+            state = null;
+//            for(int i=0;i<command.size();i++)
+//            {
+//                command.remove(i);
+//            }
+            switch (v.getId()) {
+                case R.id.directControl:
+//                    command.add("02 01 02");
+                    ShowMessage("02 01 02");
+                    break;
+                case R.id.state1:
+//                    command.add("01 ");
+                    state = "01";
+                    break;
+                case R.id.state2:
+//                    command.add("02 ");
+                    state = "02";
+                    break;
+                case R.id.state3:
+//                    command.add("03 ");
+                    state = "03";
+                    break;
+                case R.id.state4:
+//                    command.add("04 ");
+                    state = "04";
+                    break;
+                case R.id.state5:
+//                    command.add("05 ");
+                    state = "05";
+                    break;
+                case R.id.start:
+//                    command.add("0B FF 01 00 0000 01 0000");
+//                    command1 ="0B FF 01 00 0000 01 0000";
+                    ShowMessage("0B FF 01 00 0000 01 0000");
+                    break;
+                case R.id.emergency:
+//                    command.add("EE");
+                    ShowMessage("EE");
+                    break;
+                case R.id.read_state:
+//                    command.add("01");
+                    ShowMessage("01");
+                    break;
+                case R.id.ca:
+//                    command.add("CA");
+                    ShowMessage("CA");
+                    break;
+            }
+
+        }
+
+    }
+
+    //Check:have state before add Time and Pressure
+    private boolean CheckCommand() {
+        if(state != null){
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    //send Time and pressure in EditText id:Time,Pressure + send state to EditText id:message
+    private void AddTAP() {
+        time = (EditText) findViewById(R.id.Time);
+        pressure = (EditText) findViewById(R.id.Pressure);
+        if(CheckCommand() == true){
+            final String TAP = state + " " + time.getText().toString() + " " + pressure.getText().toString();
+//            command.add(TAP);
+            ShowMessage(TAP);
+        }else{
+            System.out.println("add your state before set Time and Pressure");
+        }
+    }
+
+    //show message in EditText id:message
+    private void ShowMessage(String msg) {
+//        Message.setText(command.get(15));
+        Message.setText(msg);
+
+    }
+
+    private void hideKeyboardInput(View v){
+        InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+        imm.hideSoftInputFromWindow(v.getWindowToken(), 0);
+    }
 
     public void onClick(View v) {
 //passed         System.out.println("Hello onClick Yeah !!! ");
@@ -116,7 +323,7 @@ public class MainActivity extends ActionBarActivity {
             @Override
             protected Void doInBackground(Void... voids) {
                 new com.github.reneweb.androidasyncsocketexamples.tcp.Client(ip, prt ,msg);
- //passed               System.out.println(ip + " and" + prt);
+                //passed               System.out.println(ip + " and" + prt);
                 return null;
             }
         }.execute();
