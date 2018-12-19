@@ -15,8 +15,10 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import java.net.UnknownHostException;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 
 public class MainActivity extends ActionBarActivity {
@@ -28,8 +30,9 @@ public class MainActivity extends ActionBarActivity {
     private static MainActivity instance;
     List<String> list = new ArrayList<String>();
 
-    private String ipAdd,portString,state,command1;
+    private String ipAdd,portString,state,command1,TextCom;
     private int port;
+    int NumCom = 0;
     List<String> command = new ArrayList<String>();
 
 
@@ -256,10 +259,147 @@ public class MainActivity extends ActionBarActivity {
     private void AddTAP() {
         time = (EditText) findViewById(R.id.Time);
         pressure = (EditText) findViewById(R.id.Pressure);
+        String TAP;
+        String Bcom = "0A FF ";
+        String Ti = time.getText().toString();
+        String Pr = pressure.getText().toString();
+        int resultT = Integer.parseInt(Ti);
+        int resultP = Integer.parseInt(Pr);
+        String time1 = Integer.toHexString(resultT);
+        String pressure1 = Integer.toHexString(resultP);
         if(CheckCommand() == true){
-            final String TAP = state + " " + time.getText().toString() + " " + pressure.getText().toString();
-//            command.add(TAP);
-            ShowMessage(TAP);
+            if(NumCom == 0){
+//                Integer.toHexString(result);
+                if(resultT < 16 && resultP <16){
+                    TextCom =  state + " 000" + time1.toUpperCase() + " 000" +pressure1.toUpperCase() ;
+                    NumCom++;
+                    TAP = Bcom.toString() + "0" +NumCom+" " + TextCom.toString();
+                    ShowMessage(TAP);
+                }else if(resultT <16 && resultP>=16 &&resultP<256){
+                    TextCom =  state + " 000" + time1.toUpperCase() + " 00" +pressure1.toUpperCase() ;
+                    NumCom++;
+                    TAP = Bcom.toString() + "0" +NumCom+" " + TextCom.toString();
+                    ShowMessage(TAP);
+                }
+                else if(resultT >=16 && resultP<16 &&resultT<256){
+                    TextCom =  state + " 00" + time1.toUpperCase() + " 000" +pressure1.toUpperCase() ;
+                    NumCom++;
+                    TAP = Bcom.toString() + "0" +NumCom+" " + TextCom.toString();
+                    ShowMessage(TAP);
+                }else if(resultT >=16 && resultT < 256 && resultP>=16 &&resultP<256){
+                    TextCom =  state + " 00" + time1.toUpperCase() + " 00" +pressure1.toUpperCase() ;
+                    NumCom++;
+                    TAP = Bcom.toString() + "0" +NumCom+" " + TextCom.toString();
+                    ShowMessage(TAP);
+                }else if(resultT >=16 && resultT < 256 && resultP>=256 &&resultP<4096){
+                    TextCom =  state + " 00" + time1.toUpperCase() + " 0" +pressure1.toUpperCase() ;
+                    NumCom++;
+                    TAP = Bcom.toString() + "0" +NumCom+" " + TextCom.toString();
+                    ShowMessage(TAP);
+                } else if(resultT <16 && resultP>=256 &&resultP<4096){
+                    TextCom =  state + " 000" + time1.toUpperCase() + " 0" +pressure1.toUpperCase() ;
+                    NumCom++;
+                    TAP = Bcom.toString() + "0" +NumCom+" " + TextCom.toString();
+                    ShowMessage(TAP);
+                }else if(resultT >=256 && resultT < 4096 && resultP>=256 &&resultP<4096){
+                    TextCom =  state + " 0" + time1.toUpperCase() + " 0" +pressure1.toUpperCase() ;
+                    NumCom++;
+                    TAP = Bcom.toString() + "0" +NumCom+" " + TextCom.toString();
+                    ShowMessage(TAP);
+                } else if(resultT >=256 && resultT < 4096 && resultP>=16 &&resultP<256){
+                    TextCom =  state + " 0" + time1.toUpperCase() + " 00" +pressure1.toUpperCase() ;
+                    NumCom++;
+                    TAP = Bcom.toString() + "0" +NumCom+" " + TextCom.toString();
+                    ShowMessage(TAP);
+                }else if(resultT >=256 && resultT < 4096 && resultP<16){
+                    TextCom =  state + " 0" + time1.toUpperCase() + " 000" +pressure1.toUpperCase() ;
+                    NumCom++;
+                    TAP = Bcom.toString() + "0" +NumCom+" " + TextCom.toString();
+                    ShowMessage(TAP);
+                }else if(resultT >=4096 && resultT < 65535 && resultP<16){
+                    TextCom =  state + " " + time1.toUpperCase() + " 000" +pressure1.toUpperCase() ;
+                    NumCom++;
+                    TAP = Bcom.toString() + "0" +NumCom+" " + TextCom.toString();
+                    ShowMessage(TAP);
+                }else if(resultT >=4096 && resultT < 65535 && resultP>=16 &&resultP<256){
+                    TextCom =  state + " " + time1.toUpperCase() + " 00" +pressure1.toUpperCase() ;
+                    NumCom++;
+                    TAP = Bcom.toString() + "0" +NumCom+" " + TextCom.toString();
+                    ShowMessage(TAP);
+                }else if(resultT >=4096 && resultT < 65535 && resultP>=256 &&resultP<4096){
+                    TextCom =  state + " " + time1.toUpperCase() + " 00" +pressure1.toUpperCase() ;
+                    NumCom++;
+                    TAP = Bcom.toString() + "0" +NumCom+" " + TextCom.toString();
+                    ShowMessage(TAP);
+                }else{
+                    System.out.println("Time and Pressure is not a true value.");
+                }
+            }else {
+                if(resultT < 16 && resultP <16){
+                    TextCom = TextCom +" "+  state + " 000" + time1.toUpperCase() + " 000" +pressure1.toUpperCase() ;
+                    NumCom++;
+                    TAP = Bcom.toString() + "0" +NumCom+" " + TextCom.toString();
+                    ShowMessage(TAP);
+                }else if(resultT <16 && resultP>=16 &&resultP<256){
+                    TextCom = TextCom +" "+  state + " 000" + time1.toUpperCase() + " 00" +pressure1.toUpperCase() ;
+                    NumCom++;
+                    TAP = Bcom.toString() + "0" +NumCom+" " + TextCom.toString();
+                    ShowMessage(TAP);
+                }
+                else if(resultT >=16 && resultP<16 &&resultT<256){
+                    TextCom = TextCom +" "+  state + " 00" + time1.toUpperCase() + " 000" +pressure1.toUpperCase() ;
+                    NumCom++;
+                    TAP = Bcom.toString() + "0" +NumCom+" " + TextCom.toString();
+                    ShowMessage(TAP);
+                }else if(resultT >=16 && resultT < 256 && resultP>=16 &&resultP<256){
+                    TextCom = TextCom +" "+  state + " 00" + time1.toUpperCase() + " 00" +pressure1.toUpperCase() ;
+                    NumCom++;
+                    TAP = Bcom.toString() + "0" +NumCom+" " + TextCom.toString();
+                    ShowMessage(TAP);
+                }else if(resultT >=16 && resultT < 256 && resultP>=256 &&resultP<4096){
+                    TextCom = TextCom +" "+  state + " 00" + time1.toUpperCase() + " 0" +pressure1.toUpperCase() ;
+                    NumCom++;
+                    TAP = Bcom.toString() + "0" +NumCom+" " + TextCom.toString();
+                    ShowMessage(TAP);
+                } else if(resultT <16 && resultP>=256 &&resultP<4096){
+                    TextCom = TextCom +" "+  state + " 000" + time1.toUpperCase() + " 0" +pressure1.toUpperCase() ;
+                    NumCom++;
+                    TAP = Bcom.toString() + "0" +NumCom+" " + TextCom.toString();
+                    ShowMessage(TAP);
+                }else if(resultT >=256 && resultT < 4096 && resultP>=256 &&resultP<4096){
+                    TextCom = TextCom +" "+  state + " 0" + time1.toUpperCase() + " 0" +pressure1.toUpperCase() ;
+                    NumCom++;
+                    TAP = Bcom.toString() + "0" +NumCom+" " + TextCom.toString();
+                    ShowMessage(TAP);
+                } else if(resultT >=256 && resultT < 4096 && resultP>=16 &&resultP<256){
+                    TextCom = TextCom +" "+  state + " 0" + time1.toUpperCase() + " 00" +pressure1.toUpperCase() ;
+                    NumCom++;
+                    TAP = Bcom.toString() + "0" +NumCom+" " + TextCom.toString();
+                    ShowMessage(TAP);
+                }else if(resultT >=256 && resultT < 4096 && resultP<16){
+                    TextCom = TextCom +" "+  state + " 0" + time1.toUpperCase() + " 000" +pressure1.toUpperCase() ;
+                    NumCom++;
+                    TAP = Bcom.toString() + "0" +NumCom+" " + TextCom.toString();
+                    ShowMessage(TAP);
+                }else if(resultT >=4096 && resultT < 65535 && resultP<16){
+                    TextCom = TextCom +" "+ state + " " + time1.toUpperCase() + " 000" +pressure1.toUpperCase() ;
+                    NumCom++;
+                    TAP = Bcom.toString() + "0" +NumCom+" " + TextCom.toString();
+                    ShowMessage(TAP);
+                }else if(resultT >=4096 && resultT < 65535 && resultP>=16 &&resultP<256){
+                    TextCom = TextCom +" "+  state + " " + time1.toUpperCase() + " 00" +pressure1.toUpperCase() ;
+                    NumCom++;
+                    TAP = Bcom.toString() + "0" +NumCom+" " + TextCom.toString();
+                    ShowMessage(TAP);
+                }else if(resultT >=4096 && resultT < 65535 && resultP>=256 &&resultP<4096){
+                    TextCom = TextCom +" "+  state + " " + time1.toUpperCase() + " 00" +pressure1.toUpperCase() ;
+                    NumCom++;
+                    TAP = Bcom.toString() + "0" +NumCom+" " + TextCom.toString();
+                    ShowMessage(TAP);
+                }else{
+                    System.out.println("Time and Pressure is not a true value.");
+                }
+            }
         }else{
             System.out.println("add your state before set Time and Pressure");
         }
@@ -331,6 +471,8 @@ public class MainActivity extends ActionBarActivity {
         listView = (ListView) findViewById(R.id.listview);
         listView.setAdapter(itemsAdapter);
         Message.setText("");
+        NumCom =0;
+        TextCom = null;
     }
 ////////////////////////////////////////////////////////////////////////////////////////////////////
 
