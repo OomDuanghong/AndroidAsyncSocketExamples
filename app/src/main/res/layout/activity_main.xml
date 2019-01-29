@@ -70,6 +70,37 @@
         <Button
             android:layout_width="70dp"
             android:layout_height="wrap_content"
+            android:text="Inflate1"
+            android:id="@+id/inflate1"/>
+        <Button
+            android:layout_width="70dp"
+            android:layout_height="wrap_content"
+            android:text="Inflate2"
+            android:id="@+id/inflate2"/>
+        <Button
+            android:layout_width="70dp"
+            android:layout_height="wrap_content"
+            android:text="Inflate3"
+            android:id="@+id/inflate3"/>
+        <Button
+            android:layout_width="70dp"
+            android:layout_height="wrap_content"
+            android:text="Inflate4"
+            android:id="@+id/inflate4"/>
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Defaul all"
+            android:id="@+id/state5"/>
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <Button
+            android:layout_width="70dp"
+            android:layout_height="wrap_content"
             android:text="S1"
             android:id="@+id/state1"/>
         <Button
@@ -87,11 +118,6 @@
             android:layout_height="wrap_content"
             android:text="S4"
             android:id="@+id/state4"/>
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Defaulall"
-            android:id="@+id/state5"/>
 
     </LinearLayout>
 

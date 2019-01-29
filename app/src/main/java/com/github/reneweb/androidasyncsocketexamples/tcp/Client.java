@@ -91,6 +91,7 @@ public class Client {
             @Override
             public void onConnectCompleted(Exception ex, final AsyncSocket socket) {
                 handleConnectCompleted(ex, socket);
+
             }
         });
     }
@@ -109,6 +110,7 @@ public class Client {
             public void onCompleted(Exception ex) {
                 if (ex != null) throw new RuntimeException(ex);
                 System.out.println("[Client] Successfully wrote message");
+
             }
         });
 

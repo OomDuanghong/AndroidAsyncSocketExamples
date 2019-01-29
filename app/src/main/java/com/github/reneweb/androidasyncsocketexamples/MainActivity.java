@@ -87,6 +87,10 @@ public class MainActivity extends ActionBarActivity {
     private void initView(){
         // To register click event to view
         findViewById(R.id.directControl).setOnClickListener(new InnerOnClickListener());
+        findViewById(R.id.inflate1).setOnClickListener(new InnerOnClickListener());
+        findViewById(R.id.inflate2).setOnClickListener(new InnerOnClickListener());
+        findViewById(R.id.inflate3).setOnClickListener(new InnerOnClickListener());
+        findViewById(R.id.inflate4).setOnClickListener(new InnerOnClickListener());
         findViewById(R.id.state1).setOnClickListener(new InnerOnClickListener());
         findViewById(R.id.state2).setOnClickListener(new InnerOnClickListener());
         findViewById(R.id.state3).setOnClickListener(new InnerOnClickListener());
@@ -106,6 +110,18 @@ public class MainActivity extends ActionBarActivity {
         public void onClick(View v) {
             switch (v.getId()) {
                 case R.id.directControl:
+                    AddCommand(v);
+                    break;
+                case R.id.inflate1:
+                    AddCommand(v);
+                    break;
+                case R.id.inflate2:
+                    AddCommand(v);
+                    break;
+                case R.id.inflate3:
+                    AddCommand(v);
+                    break;
+                case R.id.inflate4:
                     AddCommand(v);
                     break;
                 case R.id.state1:
@@ -153,6 +169,18 @@ public class MainActivity extends ActionBarActivity {
                 case R.id.directControl:
 //                    command.add("02 01 02");
                     ShowMessage("02 01 02");
+                    break;
+                case R.id.inflate1:
+                    ShowMessage("02 FF 81");
+                    break;
+                case R.id.inflate2:
+                    ShowMessage("02 FF C1");
+                    break;
+                case R.id.inflate3:
+                    ShowMessage("02 FF E1");
+                    break;
+                case R.id.inflate4:
+                    ShowMessage("02 FF F1");
                     break;
                 case R.id.state1:
 //                    command.add("01 ");
@@ -202,6 +230,18 @@ public class MainActivity extends ActionBarActivity {
                 case R.id.directControl:
 //                    command.add("02 01 02");
                     ShowMessage("02 01 02");
+                    break;
+                case R.id.inflate1:
+                    ShowMessage("02 FF 81");
+                    break;
+                case R.id.inflate2:
+                    ShowMessage("02 FF C1");
+                    break;
+                case R.id.inflate3:
+                    ShowMessage("02 FF E1");
+                    break;
+                case R.id.inflate4:
+                    ShowMessage("02 FF F1");
                     break;
                 case R.id.state1:
 //                    command.add("01 ");

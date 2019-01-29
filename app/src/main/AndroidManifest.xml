@@ -1,24 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.github.reneweb.androidasyncsocketexamples" >
+    package="com.github.reneweb.androidasyncsocketexamples">
 
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.INTERNET" />
-
 
     <application
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
-        android:theme="@style/AppTheme" >
+        android:theme="@style/AppTheme">
         <activity
-            android:name="com.github.reneweb.androidasyncsocketexamples.MainActivity"
-            android:label="@string/app_name" >
+            android:name=".MainActivity">
+        </activity>
+        <activity android:name="com.github.renewb.androidasyncsocketexamples.SettingPage" />
+        <activity android:name="com.github.renewb.androidasyncsocketexamples.SetiingCmdPage" />
+        <activity android:name="com.github.renewb.androidasyncsocketexamples.DirectControl" />
+        <activity android:name="com.github.renewb.androidasyncsocketexamples.ManualMode" />
+        <activity android:name="com.github.renewb.androidasyncsocketexamples.SetTimeAndPressure" />
+        <activity android:name="com.github.renewb.androidasyncsocketexamples.AutoMode" />
+        <activity android:name="com.github.renewb.androidasyncsocketexamples.ConfirmPage" />
+        <activity android:name="com.github.renewb.androidasyncsocketexamples.Setting" />
+        <activity android:name="com.github.renewb.androidasyncsocketexamples.FirstSetting"
+            android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+
         </activity>
+        <activity android:name="com.github.renewb.androidasyncsocketexamples.settingMode2" />
+        <activity android:name="com.github.renewb.androidasyncsocketexamples.settingMode3" />
+        <activity android:name="com.github.renewb.androidasyncsocketexamples.UserPage" />
+        <activity android:name="com.github.renewb.androidasyncsocketexamples.OperatingTime"></activity>
     </application>
+
 </manifest>

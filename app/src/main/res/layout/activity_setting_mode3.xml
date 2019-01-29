@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.github.renewb.androidasyncsocketexamples.settingMode3">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Setting : Mode 3"
+            android:textColor="@color/colorBlack"
+            android:textSize="40dp"
+            android:textStyle="bold" />
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+
+
+            <LinearLayout
+                android:layout_width="500dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="25dp"
+                android:layout_marginStart="25dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginEnd="10dp"
+                android:layout_marginRight="25dp"
+                android:background="@drawable/textboder"
+                android:orientation="vertical">
+
+
+                <LinearLayout
+                    android:layout_width="600dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="left"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="80dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="7dp"
+                        android:text="Inflate1234"
+                        android:textColor="@color/colorBlack"
+                        android:textSize="15dp" />
+
+                    <EditText
+                        android:id="@+id/Secin4_mode3"
+                        android:layout_width="80dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:text="5"/>
+
+                    <TextView
+                        android:layout_width="25dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
+                        android:text="Sec" />
+
+                    <EditText
+                        android:id="@+id/Prein4_mode3"
+                        android:layout_width="80dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:text="60"/>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
+                        android:layout_marginRight="10dp"
+                        android:text="Psi" />
+
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="600dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="left"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="80dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="7dp"
+                        android:text="Deflate"
+                        android:textColor="@color/colorBlack"
+                        android:textSize="15dp" />
+
+                    <EditText
+                        android:id="@+id/deflate_mode3"
+                        android:layout_width="80dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:text="5"/>
+
+                    <TextView
+                        android:layout_width="25dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
+                        android:text="Sec." />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="600dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="left"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="80dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="7dp"
+                        android:text="Cycle Time"
+                        android:textColor="@color/colorBlack"
+                        android:textSize="15dp" />
+
+                    <TextView
+                        android:id="@+id/cycleT_mode3"
+                        android:layout_width="80dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dp"
+                        android:text="10"
+                        android:textSize="20dp"
+                        android:background="@color/colorGray"/>
+
+                    <TextView
+                        android:layout_width="25dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"
+                        android:text="Sec." />
+                </LinearLayout>
+            </LinearLayout>
+        </RelativeLayout>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp">
+            <Button
+                android:id="@+id/btn_back_mode3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="#FE0000"
+                android:text="Back"
+                tools:layout_editor_absoluteX="16dp"
+                tools:layout_editor_absoluteY="447dp"
+
+                android:layout_marginLeft="20dp"/>
+            <Button
+                android:id="@+id/user_mode3"
+                android:layout_width="240dp"
+                android:layout_height="wrap_content"
+                android:background="#FFC300"
+                android:text="User"
+                tools:layout_editor_absoluteX="128dp"
+                tools:layout_editor_absoluteY="447dp"
+                android:layout_marginLeft="20dp"/>
+        </LinearLayout>
+    </LinearLayout>
+
+
+</android.support.constraint.ConstraintLayout>
